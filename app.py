@@ -97,7 +97,7 @@ def webhook():
                                 states_value = [hidden_state, cell_state]      
                             return decoded_sentence
 
-                            class ChatBot:
+                        class ChatBot:
                             #Method to convert user input into a matrix
                             def string_to_matrix(self, user_input):
                                 tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
