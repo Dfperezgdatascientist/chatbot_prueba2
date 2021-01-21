@@ -98,6 +98,21 @@ def webhook():
                             return decoded_sentence
 
                         class ChatBot:
+                            negative_responses = ("no", "nope", "nah", "naw", "no gracias", "lo siento")
+                            exit_commands = ("cerrar", "salir", "partir", "chao", "hasta luego", "parar", "detener", "terminar")
+                            #Method to start the conversation
+                            def start_chat(self):
+                                user_response = input("Hola, soy un chatbot entrenado en diálogos de politica. ¿Te gustaría chatear conmigo?\n")
+                                
+                                if user_response in self.negative_responses:
+                                print("Ok, Que tengas un gran día!")
+                                return
+                                self.chat(user_response)
+                            #Method to handle the conversation
+                            def chat(self, reply):
+                                while not self.make_exit(reply):
+                                reply = input(self.generate_response(reply)+"\n")
+                                
                             #Method to convert user input into a matrix
                             def string_to_matrix(self, user_input):
                                 tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
