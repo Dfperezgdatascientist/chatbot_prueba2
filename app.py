@@ -113,7 +113,7 @@ def webhook():
                             #Method to handle the conversation
                             def chat(self, reply):
                                 while not self.make_exit(reply):
-                                reply = input(self.generate_response(reply)+"\n")
+                                    reply = input(self.generate_response(reply)+"\n")
                                 
                             #Method to convert user input into a matrix
                             def string_to_matrix(self, user_input):
