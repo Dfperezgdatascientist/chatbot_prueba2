@@ -116,9 +116,10 @@ def webhook():
                                 #Remove <START> and <END> tokens from chatbot_response
                                 chatbot_response = chatbot_response.replace("<START>",'')
                                 chatbot_response = chatbot_response.replace("<END>",'')
-                                return chatbot_response    
+                                return chatbot_response
+                                send_message(sender_id, chatbot_response)   
                             
-                        send_message(sender_id, chatbot_response)
+                        #--send_message(sender_id, chatbot_response)
                     else:
                         send_message(sender_id, 'Hola')
 
