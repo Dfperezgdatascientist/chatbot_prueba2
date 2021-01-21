@@ -52,7 +52,11 @@ def webhook():
                     test_input = messaging_event['message']['text']  # el texto del mensaje
 
                     if inteligente:
+                        from tensorflow import keras
+                        from keras.layers import Input, LSTM, Dense
+                        from keras.models import Model
                         from keras.models import load_model
+                        
                         entrenamiento = 'training_model.hdf5' 
                         training_model = load_model(entrenamiento)
                         encoder_inputs = training_model.input[0]
