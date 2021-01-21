@@ -5,8 +5,6 @@ import os
 import sys
 import json
 import requests
-from tensorflow import keras
-from keras.models import Model
 from flask import Flask, request
 
 import spacy
