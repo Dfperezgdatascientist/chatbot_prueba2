@@ -81,20 +81,20 @@ def webhook():
                             
                             stop_condition = False
                             while not stop_condition:
-                            #Predicting output tokens with probabilities and states
-                            output_tokens, hidden_state, cell_state = decoder_model.predict([target_seq] + states_value)
-                            #Choosing the one with highest probability
-                            sampled_token_index = np.argmax(output_tokens[0, -1, :])
-                            sampled_token = reverse_target_features_dict[sampled_token_index]
-                            decoded_sentence += " " + sampled_token      
-                            #Stop if hit max length or found the stop token
-                            if (sampled_token == '<END>'): #or len(decoded_sentence) > max_decoder_seq_length):
-                                stop_condition = True
-                            #Update the target sequence
-                            target_seq = np.zeros((1, 1, num_decoder_tokens))
-                            target_seq[0, 0, sampled_token_index] = 1.
-                            #Update states
-                            states_value = [hidden_state, cell_state]      
+                                #Predicting output tokens with probabilities and states
+                                output_tokens, hidden_state, cell_state = decoder_model.predict([target_seq] + states_value)
+                                #Choosing the one with highest probability
+                                sampled_token_index = np.argmax(output_tokens[0, -1, :])
+                                sampled_token = reverse_target_features_dict[sampled_token_index]
+                                decoded_sentence += " " + sampled_token      
+                                #Stop if hit max length or found the stop token
+                                if (sampled_token == '<END>'): #or len(decoded_sentence) > max_decoder_seq_length):
+                                    stop_condition = True
+                                #Update the target sequence
+                                target_seq = np.zeros((1, 1, num_decoder_tokens))
+                                target_seq[0, 0, sampled_token_index] = 1.
+                                #Update states
+                                states_value = [hidden_state, cell_state]      
                             return decoded_sentence
 
                             class ChatBot:
@@ -102,11 +102,11 @@ def webhook():
                             def string_to_matrix(self, user_input):
                                 tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
                                 user_input_matrix = np.zeros(
-                                (1, max_encoder_seq_length, num_encoder_tokens),
-                                dtype='float32')
+                                    (1, max_encoder_seq_length, num_encoder_tokens),
+                                    dtype='float32')
                                 for timestep, token in enumerate(tokens):
-                                if token in input_features_dict:
-                                    user_input_matrix[0, timestep, input_features_dict[token]] = 1.
+                                    if token in input_features_dict:
+                                        user_input_matrix[0, timestep, input_features_dict[token]] = 1.
                                 return user_input_matrix
                             
                             #Method that will create a response using seq2seq model we built
@@ -116,7 +116,7 @@ def webhook():
                                 #Remove <START> and <END> tokens from chatbot_response
                                 chatbot_response = chatbot_response.replace("<START>",'')
                                 chatbot_response = chatbot_response.replace("<END>",'')
-                                return chatbot_response
+                                #--return chatbot_response
                                 send_message(sender_id, chatbot_response)   
                             
                         #--send_message(sender_id, chatbot_response)
