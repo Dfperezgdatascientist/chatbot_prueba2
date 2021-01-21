@@ -49,6 +49,7 @@ def webhook():
                     sender_id = messaging_event['sender']['id']  # el facebook ID de la persona enviando el mensaje
                     recipient_id = messaging_event['recipient']['id']  # el facebook ID de la pagina que recibe (tu pagina)
                     message_text = messaging_event['message']['text']  # el texto del mensaje
+                    test_input = messaging_event['message']['text']  # el texto del mensaje
 
                     if inteligente:
                         from keras.models import load_model
@@ -99,7 +100,7 @@ def webhook():
 
                         class ChatBot:
                             negative_responses = ("no", "nope", "nah", "naw", "no gracias", "lo siento")
-                            exit_commands = ("cerrar", "salir", "partir", "chao", "hasta luego", "parar", "detener", "terminar")
+                            #--exit_commands = ("cerrar", "salir", "partir", "chao", "hasta luego", "parar", "detener", "terminar")
                             #Method to start the conversation
                             def start_chat(self):
                                 user_response = input("Hola, soy un chatbot entrenado en diálogos de politica. ¿Te gustaría chatear conmigo?\n")
