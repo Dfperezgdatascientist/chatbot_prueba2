@@ -4,8 +4,6 @@
 import os
 import sys
 import json
-#from chatterbot import ChatBot
-#from chatterbot.trainers import ChatterBotCorpusTrainer
 import requests
 from flask import Flask, request
 
@@ -53,16 +51,23 @@ def webhook():
                     message_text = messaging_event['message']['text']  # el texto del mensaje
 
                     if inteligente:
-                        #--chatbot = ChatBot('Chalo')
-                        #--trainer = ChatterBotCorpusTrainer(chatbot)
+                        #Encoder
+                        encoder_inputs = Input(shape=(None, num_encoder_tokens))
+                        encoder_lstm = LSTM(dimensionality, return_state=True)
+                        encoder_outputs, state_hidden, state_cell = encoder_lstm(encoder_inputs)
+                        encoder_states = [state_hidden, state_cell]
+                        #Decoder
+                        decoder_inputs = Input(shape=(None, num_decoder_tokens))
+                        decoder_lstm = LSTM(dimensionality, return_sequences=True, return_state=True)
+                        decoder_outputs, decoder_state_hidden, decoder_state_cell = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+                        decoder_dense = Dense(num_decoder_tokens, activation='softmax')
+                        decoder_outputs = decoder_dense(decoder_outputs)
 
-                        # Train the chatbot based on the spanish corpus
+                        filename = "training_model.hdf5"
+                        model.load_weights(filename)
+                        model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-                        #--trainer.train('chatterbot.corpus.english')
-
-                        #--response = chatbot.get_response(message_text)
-
-                        send_message(sender_id, 'HOLA, ESTO ES UNA PRUEBA')
+                        send_message(sender_id, model)
                     else:
                         send_message(sender_id, 'Hola')
 
