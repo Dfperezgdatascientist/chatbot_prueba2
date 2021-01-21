@@ -53,16 +53,16 @@ def webhook():
                     message_text = messaging_event['message']['text']  # el texto del mensaje
 
                     if inteligente:
-                        chatbot = ChatBot('Chalo')
-                        trainer = ChatterBotCorpusTrainer(chatbot)
+                        #--chatbot = ChatBot('Chalo')
+                        #--trainer = ChatterBotCorpusTrainer(chatbot)
 
                         # Train the chatbot based on the spanish corpus
 
-                        trainer.train('chatterbot.corpus.english')
+                        #--trainer.train('chatterbot.corpus.english')
 
-                        response = chatbot.get_response(message_text)
+                        #--response = chatbot.get_response(message_text)
 
-                        send_message(sender_id, response.text)
+                        send_message(sender_id, 'HOLA, ESTO ES UNA PRUEBA')
                     else:
                         send_message(sender_id, 'Hola')
 
