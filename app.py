@@ -105,7 +105,8 @@ def webhook():
                                 user_response = input("Hola, soy un chatbot entrenado en diálogos de politica. ¿Te gustaría chatear conmigo?\n")
                                 
                                 if user_response in self.negative_responses:
-                                print("Ok, Que tengas un gran día!")
+                                #--print("Ok, Que tengas un gran día!")
+                                send_message(sender_id, "Ok, Que tengas un gran día!")
                                 return
                                 self.chat(user_response)
                             #Method to handle the conversation
