@@ -107,8 +107,8 @@ def webhook():
                                 
                                 if user_response in self.negative_responses:
                                 #--print("Ok, Que tengas un gran día!")
-                                send_message(sender_id, "Ok, Que tengas un gran día!")
-                                return
+                                    send_message(sender_id, "Ok, Que tengas un gran día!")
+                                    return
                                 self.chat(user_response)
                             #Method to handle the conversation
                             def chat(self, reply):
