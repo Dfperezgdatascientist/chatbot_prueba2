@@ -57,6 +57,8 @@ def webhook():
                         from keras.layers import Input
                         from keras.layers import LSTM
                         from keras.layers import Dense
+                        import re
+                        import random
 
                         input_tokens = set()
                         target_tokens = set()
