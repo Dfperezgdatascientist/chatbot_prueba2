@@ -125,7 +125,7 @@ def webhook():
                                                      
                         #Method to convert user input into a matrix
                         def string_to_matrix(message_text):
-                            tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
+                            tokens = re.findall(r"[\w']+|[^\s\w]", message_text)
                             user_input_matrix = np.zeros(
                                 (1, max_encoder_seq_length, num_encoder_tokens),
                                 dtype='float32')
