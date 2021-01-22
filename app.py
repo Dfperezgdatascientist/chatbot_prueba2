@@ -58,6 +58,12 @@ def webhook():
                         from keras.layers import LSTM
                         from keras.layers import Dense
 
+                        input_tokens = set()
+                        target_tokens = set()
+
+                        num_encoder_tokens = len(input_tokens)
+                        num_decoder_tokens = len(target_tokens)
+
                         #Encoder
                         encoder_inputs = Input(shape=(None, num_encoder_tokens))
                         encoder_lstm = LSTM(dimensionality, return_state=True)
