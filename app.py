@@ -60,6 +60,7 @@ def webhook():
 
                         input_tokens = set()
                         target_tokens = set()
+                        dimensionality = 256
 
                         num_encoder_tokens = len(input_tokens)
                         num_decoder_tokens = len(target_tokens)
