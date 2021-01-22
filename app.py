@@ -59,6 +59,7 @@ def webhook():
                         from keras.layers import Dense
                         import re
                         import random
+                        import numpy as np
 
                         input_tokens = set()
                         target_tokens = set()
