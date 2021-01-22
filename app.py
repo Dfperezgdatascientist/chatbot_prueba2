@@ -67,6 +67,7 @@ def webhook():
 
                         latent_dim = 256
                         decoder_lstm = ''
+                        decoder_inputs = ''
                         decoder_state_input_hidden = Input(shape=(latent_dim,))
                         decoder_state_input_cell = Input(shape=(latent_dim,))
                         decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
