@@ -49,7 +49,7 @@ def webhook():
                     sender_id = messaging_event['sender']['id']  # el facebook ID de la persona enviando el mensaje
                     recipient_id = messaging_event['recipient']['id']  # el facebook ID de la pagina que recibe (tu pagina)
                     message_text = messaging_event['message']['text']  # el texto del mensaje
-                    test_input = messaging_event['message']['text']  # el texto del mensaje
+                    #test_input = messaging_event['message']['text']  # el texto del mensaje
 
                     if inteligente:
                         from keras.models import load_model
@@ -135,15 +135,15 @@ def webhook():
                             return user_input_matrix
                         
                         #Method that will create a response using seq2seq model we built
-                        def generate_response(user_input):
-                            input_matrix = string_to_matrix(user_input)    
+                        def generate_response(message_text):
+                            input_matrix = string_to_matrix(message_text)    
                             chatbot_response = decode_response(input_matrix)    
                             #Remove <START> and <END> tokens from chatbot_response
                             chatbot_response = chatbot_response.replace("<START>",'')
                             chatbot_response = chatbot_response.replace("<END>",'')
                             return chatbot_response                                   
                             
-                        send_message(sender_id, generate_response())
+                        send_message(sender_id, generate_response(message_text))
                     else:
                         send_message(sender_id, 'Hola')
 
