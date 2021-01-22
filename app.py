@@ -54,6 +54,7 @@ def webhook():
                     if inteligente:
                         from keras.models import load_model
                         from keras.models import Model
+                        from keras.layers import Input
 
                         entrenamiento = 'training_model.hdf5' 
                         training_model = load_model(entrenamiento)
