@@ -58,6 +58,18 @@ def webhook():
                         from keras.layers import LSTM
                         from keras.layers import Dense
 
+                        #Encoder
+                        encoder_inputs = Input(shape=(None, num_encoder_tokens))
+                        encoder_lstm = LSTM(dimensionality, return_state=True)
+                        encoder_outputs, state_hidden, state_cell = encoder_lstm(encoder_inputs)
+                        encoder_states = [state_hidden, state_cell]
+                        #Decoder
+                        decoder_inputs = Input(shape=(None, num_decoder_tokens))
+                        decoder_lstm = LSTM(dimensionality, return_sequences=True, return_state=True)
+                        decoder_outputs, decoder_state_hidden, decoder_state_cell = decoder_lstm(decoder_inputs, initial_state=encoder_states)
+                        decoder_dense = Dense(num_decoder_tokens, activation='softmax')
+                        decoder_outputs = decoder_dense(decoder_outputs)
+
                         entrenamiento = 'training_model.hdf5' 
                         training_model = load_model(entrenamiento)
                         encoder_inputs = training_model.input[0]
@@ -66,8 +78,7 @@ def webhook():
                         encoder_model = Model(encoder_inputs, encoder_states)
 
                         latent_dim = 256
-                        decoder_lstm = ''
-                        decoder_inputs = ''
+                        
                         decoder_state_input_hidden = Input(shape=(latent_dim,))
                         decoder_state_input_cell = Input(shape=(latent_dim,))
                         decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
