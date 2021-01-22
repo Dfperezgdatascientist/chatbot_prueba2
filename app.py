@@ -55,6 +55,8 @@ def webhook():
                         from keras.models import load_model
                         from keras.models import Model
                         from keras.layers import Input
+                        from keras.layers import LSTM
+                        from keras.layers import Dense
 
                         entrenamiento = 'training_model.hdf5' 
                         training_model = load_model(entrenamiento)
