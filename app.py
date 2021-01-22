@@ -143,7 +143,7 @@ def webhook():
                             chatbot_response = chatbot_response.replace("<END>",'')
                             return chatbot_response                                   
                             
-                        send_message(sender_id, generate_response(test_input))
+                        send_message(sender_id, generate_response(chatbot_response))
                     else:
                         send_message(sender_id, 'Hola')
 
