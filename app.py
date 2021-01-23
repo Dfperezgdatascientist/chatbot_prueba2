@@ -132,9 +132,9 @@ def webhook():
                             user_input_matrix = np.zeros(
                                 (1, 20, num_encoder_tokens),
                                 dtype='float32')
-                            for timestep, token in enumerate(tokens):
-                                if token in input_features_dict:
-                                    user_input_matrix[0, timestep, input_features_dict[token]] = 1.
+                            #for timestep, token in enumerate(tokens):
+                                #if token in input_features_dict:
+                                    #user_input_matrix[0, timestep, input_features_dict[token]] = 1.
                             return user_input_matrix
                         
                         #Method that will create a response using seq2seq model we built
