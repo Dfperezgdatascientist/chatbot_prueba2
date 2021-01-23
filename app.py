@@ -130,7 +130,7 @@ def webhook():
                         def string_to_matrix(message_text):
                             tokens = re.findall(r"[\w']+|[^\s\w]", message_text)
                             user_input_matrix = np.zeros(
-                                (1, max_encoder_seq_length, num_encoder_tokens),
+                                (1, 20, num_encoder_tokens),
                                 dtype='float32')
                             for timestep, token in enumerate(tokens):
                                 if token in input_features_dict:
