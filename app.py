@@ -45,9 +45,13 @@ def webhook():
             for messaging_event in entry['messaging']:
 
                 if messaging_event.get('message'):  # alguien envia un mensaje
+                    
+                    sender_id = messaging_event['sender']['id']  # el facebook ID de la persona enviando el mensaje
+                    recipient_id = messaging_event['recipient']['id']  # el facebook ID de la pagina que recibe (tu pagina)
+                    message_text = messaging_event['message']['text']  # el texto del mensaje
                               
-                            
-                        send_message(sender_id, 'HOLA, ESTO ES UNA PRUEBA')
+                    if inteligente:       
+                        send_message(sender_id, 'HOLA, ESTO ESTO ES UNA PRUEBA')
                     else:
                         send_message(sender_id, 'Hola')
 
