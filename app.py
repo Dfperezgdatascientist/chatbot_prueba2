@@ -4,7 +4,7 @@
 import os
 import sys
 import json
-import requests
+#import requests
 from flask import Flask, request
 
 import spacy
