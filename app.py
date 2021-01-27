@@ -51,7 +51,7 @@ def webhook():
                     message_text = messaging_event['message']['text']  # el texto del mensaje
                               
                     if inteligente:
-                        send_message(sender_id, 'Hola, esto es una prueba de política v1')
+                        send_message(sender_id, 'Hola, esto es una prueba de ciencia')
                     else:
                         send_message(sender_id, 'Hola')
 
